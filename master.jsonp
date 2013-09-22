@@ -1,0 +1,140 @@
+window["CanastaNasty/drunken-octo-archer:master"]({
+  "source": {
+    "LICENSE": {
+      "path": "LICENSE",
+      "mode": "100644",
+      "content": "The MIT License (MIT)\n\nCopyright (c) 2013 CanastaNasty\n\nPermission is hereby granted, free of charge, to any person obtaining a copy of\nthis software and associated documentation files (the \"Software\"), to deal in\nthe Software without restriction, including without limitation the rights to\nuse, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of\nthe Software, and to permit persons to whom the Software is furnished to do so,\nsubject to the following conditions:\n\nThe above copyright notice and this permission notice shall be included in all\ncopies or substantial portions of the Software.\n\nTHE SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR\nIMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS\nFOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR\nCOPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER\nIN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN\nCONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.\n",
+      "type": "blob"
+    },
+    "README.md": {
+      "path": "README.md",
+      "mode": "100644",
+      "content": "drunken-octo-archer\n===================\n\nFind in files\n",
+      "type": "blob"
+    },
+    "main.coffee": {
+      "path": "main.coffee",
+      "mode": "100644",
+      "content": "module.exports = \n  find: (raw, files) ->\n    word = RegExp raw, \"gi\"\n    console.log(raw)\n    console.log(files)\n    \n    Object.keys(files).map (key) ->\n      results  = []\n      content = files[key].content\n      \n      while (hit = word.exec(content)) != null\n        results.push\n          location: hit.index\n          path: key\n          \n      return results\n      \n    .flatten()",
+      "type": "blob"
+    },
+    "test/finder.coffee": {
+      "path": "test/finder.coffee",
+      "mode": "100644",
+      "content": "Finder = require \"../main\"\n\ndescribe \"finder\", ->\n  files = \n    \"TODO\": \n      \"content\": \"Doodoo\"\n    \"README\": \n      \"content\": \"Read this and do what it says\"\n  \n  results = Finder.find(\"do\", files)\n  console.log(results)\n    \n  it \"should be case insensitive\", ->\n    assert.equal results[0].location, 0\n    \n  it \"should scan across all files\", ->\n    assert.equal results[2].location, 14",
+      "type": "blob"
+    }
+  },
+  "distribution": {
+    "main": {
+      "path": "main",
+      "content": "(function() {\n  module.exports = {\n    find: function(raw, files) {\n      var word;\n      word = RegExp(raw, \"gi\");\n      console.log(raw);\n      console.log(files);\n      return Object.keys(files).map(function(key) {\n        var content, hit, results;\n        results = [];\n        content = files[key].content;\n        while ((hit = word.exec(content)) !== null) {\n          results.push({\n            location: hit.index,\n            path: key\n          });\n        }\n        return results;\n      }).flatten();\n    }\n  };\n\n}).call(this);\n",
+      "type": "blob"
+    },
+    "test/finder": {
+      "path": "test/finder",
+      "content": "(function() {\n  var Finder;\n\n  Finder = require(\"../main\");\n\n  describe(\"finder\", function() {\n    var files, results;\n    files = {\n      \"TODO\": {\n        \"content\": \"Doodoo\"\n      },\n      \"README\": {\n        \"content\": \"Read this and do what it says\"\n      }\n    };\n    results = Finder.find(\"do\", files);\n    console.log(results);\n    it(\"should be case insensitive\", function() {\n      return assert.equal(results[0].location, 0);\n    });\n    return it(\"should scan across all files\", function() {\n      return assert.equal(results[2].location, 14);\n    });\n  });\n\n}).call(this);\n",
+      "type": "blob"
+    }
+  },
+  "entryPoint": "main",
+  "dependencies": {},
+  "repository": {
+    "id": 13003424,
+    "name": "drunken-octo-archer",
+    "full_name": "CanastaNasty/drunken-octo-archer",
+    "owner": {
+      "login": "CanastaNasty",
+      "id": 1432520,
+      "avatar_url": "https://2.gravatar.com/avatar/0568dac9cff14cb947d2094a92e08f97?d=https%3A%2F%2Fidenticons.github.com%2Fc171966c9f88c386124ebd4c23604f44.png",
+      "gravatar_id": "0568dac9cff14cb947d2094a92e08f97",
+      "url": "https://api.github.com/users/CanastaNasty",
+      "html_url": "https://github.com/CanastaNasty",
+      "followers_url": "https://api.github.com/users/CanastaNasty/followers",
+      "following_url": "https://api.github.com/users/CanastaNasty/following{/other_user}",
+      "gists_url": "https://api.github.com/users/CanastaNasty/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/CanastaNasty/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/CanastaNasty/subscriptions",
+      "organizations_url": "https://api.github.com/users/CanastaNasty/orgs",
+      "repos_url": "https://api.github.com/users/CanastaNasty/repos",
+      "events_url": "https://api.github.com/users/CanastaNasty/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/CanastaNasty/received_events",
+      "type": "User"
+    },
+    "private": false,
+    "html_url": "https://github.com/CanastaNasty/drunken-octo-archer",
+    "description": "Find in files",
+    "fork": false,
+    "url": "https://api.github.com/repos/CanastaNasty/drunken-octo-archer",
+    "forks_url": "https://api.github.com/repos/CanastaNasty/drunken-octo-archer/forks",
+    "keys_url": "https://api.github.com/repos/CanastaNasty/drunken-octo-archer/keys{/key_id}",
+    "collaborators_url": "https://api.github.com/repos/CanastaNasty/drunken-octo-archer/collaborators{/collaborator}",
+    "teams_url": "https://api.github.com/repos/CanastaNasty/drunken-octo-archer/teams",
+    "hooks_url": "https://api.github.com/repos/CanastaNasty/drunken-octo-archer/hooks",
+    "issue_events_url": "https://api.github.com/repos/CanastaNasty/drunken-octo-archer/issues/events{/number}",
+    "events_url": "https://api.github.com/repos/CanastaNasty/drunken-octo-archer/events",
+    "assignees_url": "https://api.github.com/repos/CanastaNasty/drunken-octo-archer/assignees{/user}",
+    "branches_url": "https://api.github.com/repos/CanastaNasty/drunken-octo-archer/branches{/branch}",
+    "tags_url": "https://api.github.com/repos/CanastaNasty/drunken-octo-archer/tags",
+    "blobs_url": "https://api.github.com/repos/CanastaNasty/drunken-octo-archer/git/blobs{/sha}",
+    "git_tags_url": "https://api.github.com/repos/CanastaNasty/drunken-octo-archer/git/tags{/sha}",
+    "git_refs_url": "https://api.github.com/repos/CanastaNasty/drunken-octo-archer/git/refs{/sha}",
+    "trees_url": "https://api.github.com/repos/CanastaNasty/drunken-octo-archer/git/trees{/sha}",
+    "statuses_url": "https://api.github.com/repos/CanastaNasty/drunken-octo-archer/statuses/{sha}",
+    "languages_url": "https://api.github.com/repos/CanastaNasty/drunken-octo-archer/languages",
+    "stargazers_url": "https://api.github.com/repos/CanastaNasty/drunken-octo-archer/stargazers",
+    "contributors_url": "https://api.github.com/repos/CanastaNasty/drunken-octo-archer/contributors",
+    "subscribers_url": "https://api.github.com/repos/CanastaNasty/drunken-octo-archer/subscribers",
+    "subscription_url": "https://api.github.com/repos/CanastaNasty/drunken-octo-archer/subscription",
+    "commits_url": "https://api.github.com/repos/CanastaNasty/drunken-octo-archer/commits{/sha}",
+    "git_commits_url": "https://api.github.com/repos/CanastaNasty/drunken-octo-archer/git/commits{/sha}",
+    "comments_url": "https://api.github.com/repos/CanastaNasty/drunken-octo-archer/comments{/number}",
+    "issue_comment_url": "https://api.github.com/repos/CanastaNasty/drunken-octo-archer/issues/comments/{number}",
+    "contents_url": "https://api.github.com/repos/CanastaNasty/drunken-octo-archer/contents/{+path}",
+    "compare_url": "https://api.github.com/repos/CanastaNasty/drunken-octo-archer/compare/{base}...{head}",
+    "merges_url": "https://api.github.com/repos/CanastaNasty/drunken-octo-archer/merges",
+    "archive_url": "https://api.github.com/repos/CanastaNasty/drunken-octo-archer/{archive_format}{/ref}",
+    "downloads_url": "https://api.github.com/repos/CanastaNasty/drunken-octo-archer/downloads",
+    "issues_url": "https://api.github.com/repos/CanastaNasty/drunken-octo-archer/issues{/number}",
+    "pulls_url": "https://api.github.com/repos/CanastaNasty/drunken-octo-archer/pulls{/number}",
+    "milestones_url": "https://api.github.com/repos/CanastaNasty/drunken-octo-archer/milestones{/number}",
+    "notifications_url": "https://api.github.com/repos/CanastaNasty/drunken-octo-archer/notifications{?since,all,participating}",
+    "labels_url": "https://api.github.com/repos/CanastaNasty/drunken-octo-archer/labels{/name}",
+    "created_at": "2013-09-21T22:29:14Z",
+    "updated_at": "2013-09-22T05:52:50Z",
+    "pushed_at": "2013-09-22T05:52:46Z",
+    "git_url": "git://github.com/CanastaNasty/drunken-octo-archer.git",
+    "ssh_url": "git@github.com:CanastaNasty/drunken-octo-archer.git",
+    "clone_url": "https://github.com/CanastaNasty/drunken-octo-archer.git",
+    "svn_url": "https://github.com/CanastaNasty/drunken-octo-archer",
+    "homepage": null,
+    "size": 116,
+    "watchers_count": 0,
+    "language": "CoffeeScript",
+    "has_issues": true,
+    "has_downloads": true,
+    "has_wiki": true,
+    "forks_count": 0,
+    "mirror_url": null,
+    "open_issues_count": 0,
+    "forks": 0,
+    "open_issues": 0,
+    "watchers": 0,
+    "master_branch": "master",
+    "default_branch": "master",
+    "permissions": {
+      "admin": true,
+      "push": true,
+      "pull": true
+    },
+    "network_count": 0,
+    "branch": "master",
+    "defaultBranch": "master",
+    "includedModules": [
+      "Bindable"
+    ]
+  },
+  "progenitor": {
+    "url": "http://strd6.github.io/editor/"
+  }
+});
